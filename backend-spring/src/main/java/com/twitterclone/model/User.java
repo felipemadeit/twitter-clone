@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.PrePersist;
 
 
 @Entity
@@ -20,12 +21,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // Id for the user
-    private Long id;
+    private Long UserId;
+
 
     @Column(nullable = false, unique= true, length = 50)
     private String username;
 
-    @Column(nullable = false, unique = true, lenght = 100)
+    @Column(nullable = false, unique = true, length = 100)
     private String email;
 
     @Column(nullable = false)
@@ -49,10 +51,10 @@ public class User {
     // Getter and setters
 
     public Long getId() {
-        return id;
+        return UserId;
     }
     public void setId(Long id) {
-        this.id = id;
+        this.UserId = id;
     }
     public String getUsername() {
         return username;
@@ -72,7 +74,39 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    @PrePersist
+    public void setCreatedAt() {
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+    public String getBio() {
+        return bio;
+    }
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+    public int getFollowingCount() {
+        return followingCount;
+    }
+    public void setFollowingCount(int followingCount) {
+        this.followingCount = followingCount;
+    }
+    public int getFollowersCount() {
+        return followersCount;
+    }
+    public void setFollowersCount(int followersCount) {
+        this.followersCount = followersCount;
+    }
 
     
-
 }
