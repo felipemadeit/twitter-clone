@@ -1,16 +1,16 @@
-package com.twitterclone.model;
+package com.twitterclone.Entities;
 
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
+
 
 
 @Entity
@@ -21,7 +21,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // Id for the user
-    private Long UserId;
+    private Long userId;
 
 
     @Column(nullable = false, unique= true, length = 50)
@@ -50,11 +50,11 @@ public class User {
 
     // Getter and setters
 
-    public Long getId() {
-        return UserId;
+    public Long getuserId() {
+        return userId;
     }
     public void setId(Long id) {
-        this.UserId = id;
+        this.userId = id;
     }
     public String getUsername() {
         return username;

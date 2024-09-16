@@ -1,4 +1,4 @@
-package com.twitterclone.model;
+package com.twitterclone.Entities;
 
 import java.time.LocalDateTime;
 
@@ -10,6 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+
+
 
 @Entity
 @Table(name= "tweets")
@@ -32,7 +34,7 @@ public class Tweet {
 
     // FK to the tweet owner
     @ManyToOne
-    @JoinColumn(name = "UserId", nullable = false) // FK is user_id
+    @JoinColumn(name = "userId", nullable = false) // FK is user_id
     // Tweet owner
     private User tweetUser;
 
@@ -42,7 +44,7 @@ public class Tweet {
     private int likesCount = 0;
 
 
-    @Column (nullable = false)
+    @Column (nullable = true)
     private int retweetCount = 0;
 
     @ManyToOne
