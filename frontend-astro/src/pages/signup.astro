@@ -1,0 +1,17 @@
+---
+// Send form to the Backend API
+const handleSubmit = async (event) => {
+    event.preventDefault();
+
+
+    const formData = new FormData(event.target);
+    const userData = {
+        username: formData.get('username'),
+        email: formData.get('email'),
+        password: formData.get("password")
+        
+    };
+}
+
+---
+
