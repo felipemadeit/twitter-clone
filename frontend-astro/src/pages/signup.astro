@@ -1,10 +1,20 @@
 ---
 // Send form to the Backend API
+
+// Async => Asynchronous, this means that can manipulate code that takes time like HTTP 
+
+// The event is the parameter that reprensents the submit form (submit object)
 const handleSubmit = async (event) => {
+
+    //  Prevents the form sending data and reloading the page, we want to send the data in a controlled manner
     event.preventDefault();
 
 
+// formData is an object that thow data form
+// event.target is the form
     const formData = new FormData(event.target);
+
+    //  This fields throw the dat form written by the user
     const userData = {
         username: formData.get('username'),
         email: formData.get('email'),
