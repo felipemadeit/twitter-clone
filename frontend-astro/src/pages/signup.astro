@@ -3,6 +3,8 @@
 
 // Async => Asynchronous, this means that can manipulate code that takes time like HTTP 
 
+let errorMessage = '';
+
 // The event is the parameter that reprensents the submit form (submit object)
 const handleSubmit = async (event) => {
 
@@ -21,6 +23,35 @@ const handleSubmit = async (event) => {
         password: formData.get("password")
         
     };
+
+
+    try {
+
+        // The await means that the codes will stopped until the server response
+        // Fetch is a function that make HTTP requests in the navigator, in this case the request is for 'api/users/create'
+        const response = await fetch('/api/users/create',{
+            // POST is for create new sources
+            method: 'POST',
+            // This headers means that you are sending data in JSON format
+            headers: {'Content-Type': 'application/json'},
+            // Transform the userData object to a JSON string
+            body: JSON.stringify(userData),
+        });
+        
+        // If the server response is ok 
+        if (response.ok) {
+            window.location.href = '/login';
+        } else {
+            const error = await response.json();
+            errorMessage = error.message || 'An error was ocurred';
+            console.error(errorMessage);
+        }
+        
+
+    } catch (err) {
+        errorMessage = 'Conection Error';
+        console.error(errorMessage);
+    }
 }
 
 ---
