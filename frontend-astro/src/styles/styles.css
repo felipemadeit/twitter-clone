@@ -97,7 +97,15 @@ body {
 .rightBar {
   display: flex;
   position: absolute;
-  background-color: red;
-  width: 300px;
+  width: 420px;
   height: 100%;
+  left: 945px;
+}
+
+.container-big-logo {
+    display: flex;
+    position: absolute;
+    width: 400px;
+    height: 10px;
+    background-color: rebeccapurple;
 }
