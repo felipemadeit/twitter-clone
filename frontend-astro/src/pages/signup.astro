@@ -53,12 +53,14 @@ const handleSubmit = async (event) => {
     // Section to the transition animations
     const containerLogo = document.querySelector(".container-big-logo");
     const whatDiv = document.querySelector(".what-div");
+    const accountDiv = document.querySelector(".accounts-management");
 
     // Function to move the div
     function moveDivs () {
 
         containerLogo.classList.toggle('moved-big-logo');
         whatDiv.classList.toggle('moved-what-div');
+        accountDiv.classList.toggle('moved-accounts-management');
     };
 
     document.addEventListener("DOMContentLoaded", () => {
