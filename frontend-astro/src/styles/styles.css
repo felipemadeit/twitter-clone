@@ -142,3 +142,38 @@ body {
     transform: translateX(-850px);
 
 }
+
+.accounts-management {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    width: 380px;
+    height: 200px;
+    top: 280px;
+    left: 550px;
+    gap: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.accounts-management span {
+    color: white;
+}
+
+.button-accounts {
+    background-color: #00acee;
+    border: none;
+    width: 250px;
+    height: 40px;
+    border-radius: 20px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.button-accounts:hover {
+    transform: scale(1.1);
+}
