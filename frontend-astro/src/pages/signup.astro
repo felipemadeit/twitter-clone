@@ -1,71 +1,98 @@
 ---
 // Send form to the Backend API
 
-// Async => Asynchronous, this means that can manipulate code that takes time like HTTP 
+// Async => Asynchronous, this means that can manipulate code that takes time like HTTP
 
-let errorMessage = '';
-const title = "Sign-Up"
+let errorMessage = "";
+const title = "Sign-Up";
 
 // The event is the parameter that reprensents the submit form (submit object)
 const handleSubmit = async (event) => {
-
     //  Prevents the form sending data and reloading the page, we want to send the data in a controlled manner
     event.preventDefault();
 
-
-// formData is an object that thow data form
-// event.target is the form
+    // formData is an object that thow data form
+    // event.target is the form
     const formData = new FormData(event.target);
 
     //  This fields throw the dat form written by the user
     const userData = {
-        username: formData.get('username'),
-        email: formData.get('email'),
-        password: formData.get("password")
-        
+        username: formData.get("username"),
+        email: formData.get("email"),
+        password: formData.get("password"),
     };
 
-
     try {
-
         // The await means that the codes will stopped until the server response
         // Fetch is a function that make HTTP requests in the navigator, in this case the request is for 'api/users/create'
-        const response = await fetch('/api/users/create',{
+        const response = await fetch("/api/users/create", {
             // POST is for create new sources
-            method: 'POST',
+            method: "POST",
             // This headers means that you are sending data in JSON format
-            headers: {'Content-Type': 'application/json'},
+            headers: { "Content-Type": "application/json" },
             // Transform the userData object to a JSON string
             body: JSON.stringify(userData),
         });
-        
-        // If the server response is ok 
+
+        // If the server response is ok
         if (response.ok) {
-            window.location.href = '/login';
+            window.location.href = "/login";
         } else {
             const error = await response.json();
-            errorMessage = error.message || 'An error was ocurred';
+            errorMessage = error.message || "An error was ocurred";
             console.error(errorMessage);
         }
-        
-
     } catch (err) {
-        errorMessage = 'Conection Error';
+        errorMessage = "Conection Error";
         console.error(errorMessage);
     }
-}
-
+};
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title}</title>
-    <link rel="stylesheet" href="/src/styles/styles.css">
-</head>
-<body>
-    
-</body>
-</html>
 
+<script>
+    // Section to the transition animations
+    const containerLogo = document.querySelector(".container-big-logo");
+    const whatDiv = document.querySelector(".what-div");
+
+    // Function to move the div
+    function moveDivs () {
+
+        containerLogo.classList.toggle('moved-big-logo');
+        whatDiv.classList.toggle('moved-what-div');
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+        moveDivs();
+    });
+</script>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{title}</title>
+        <link rel="stylesheet" href="/src/styles/styles.css" />
+    </head>
+    <body>
+        <div class="container-big-logo">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"
+                ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                    d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path
+                    d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg
+            >
+        </div>
+        <div class="what-div">
+            <h1>What´s happening now</h1>
+        </div>
+    </body>
+</html>
